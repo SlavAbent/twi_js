@@ -1,6 +1,10 @@
-const cardWrapper = document.querySelector('.mainside__tweeter');
+const cardWrapper = document.querySelector('.mainside__tweeter'),
+     
+      addTweet = document.querySelector('.mainside__tweets');
 
 
+
+      
 const getData = async function(url) {
 
     const responce = await fetch(url);
@@ -12,12 +16,10 @@ const getData = async function(url) {
     return await responce.json();
 }; 
 
-;
 
-//
+
 function createCards(card) {
     const {imgLogo, img, userName, nickname, postDate, text, likes, comments } = card
-    // console.log(card);
   
     cardWrapper.insertAdjacentHTML('beforeend',  `
         <div class="mainside__tweeter-tweet">
@@ -50,14 +52,27 @@ function createCards(card) {
             </div>
         </div>
     `);
+
+    tweetLogo = cardWrapper.querySelector('.tweet__logo-img');
+    viewPosts()
+
+    
+    
   
 }
+
+function viewPosts(){
+    tweetLogo.addEventListener('click', () => {
+        addTweet.style.display = 'none';
+    }); 
+}
+
 
 
 function init() {
     getData('./db/dataBase.json').then(function(data){
         data.forEach(createCards);
-    })
+    });
 }
 
-init()
+init();
