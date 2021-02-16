@@ -15,8 +15,9 @@
             width: 100%;
             border-bottom: 1px solid #ccc;
             position: fixed;
-            top: 20;
-            margin-bottom: 5px;
+            top: 0px;
+            height: 50px;
+            padding-bottom: 5px;
             width: 600px;
             background-color: #fff;
         }
@@ -44,6 +45,7 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            margin-top: 70px;
         }
     }
   
@@ -86,7 +88,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
 }
 
 .tweets__icon{
@@ -117,7 +118,6 @@
     align-items: center;
 }
 .tweet__logo{
-    
     margin-right: 10px;
     &-img{
         width: 50px;
@@ -166,6 +166,10 @@
             background-color: @light_blue;
         }
     }
+    &-p{
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
     &-img{
         width: 100%;
         height: 300px;
@@ -178,16 +182,12 @@
         width: 100%;
         margin-top: 10px;
         &-comments{
-            width: 20px;
-            height: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
         }
         &-likes{
-            width: 20px;
-            height: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -195,3 +195,11 @@
         }
     }
 }
+
+.tweet__likes-img,
+.tweet__comments-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
