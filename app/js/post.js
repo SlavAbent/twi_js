@@ -16,11 +16,7 @@ const getData = async function(url) {
     return await responce.json();
 }; 
 
-
-
-function createCards(card) {
-    const {imgLogo, img, userName, nickname, postDate, text, likes, comments } = card
-  
+function createCards({ imgLogo, img, userName, nickname, postDate, text, likes, comments }) {
     cardWrapper.insertAdjacentHTML('beforeend',  `
         <div class="mainside__tweeter-tweet">
             <div class="tweet__info-head">
@@ -56,9 +52,6 @@ function createCards(card) {
     tweetLogo = cardWrapper.querySelector('.tweet__logo-img');
     viewPosts()
 
-    
-    
-  
 }
 
 function viewPosts(){
