@@ -1,5 +1,4 @@
 const cardWrapper = document.querySelector('.mainside__tweeter'),
-     
       addTweet = document.querySelector('.mainside__tweets');
 
 
@@ -67,5 +66,7 @@ function init() {
         data.forEach(createCards);
     });
 }
+
+
 
 init();
