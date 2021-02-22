@@ -4,7 +4,9 @@ const wrapper = document.querySelector('.wrapper'),
       inputBtn = document.querySelector('.input__btn'),
       loginName = document.querySelector('#login__input-name'),
       loginPass = document.querySelector('#login__input-pass'),
-      loginWrapper = document.querySelector('.login__wrapper');
+      loginWrapper = document.querySelector('.login__wrapper'),
+      profilesName = document.querySelector('.modal__input--named'),
+      profilesPass = document.querySelector('.modal__input--password');
 
 inputBtn.addEventListener('click', checkAuth)  
 
@@ -15,12 +17,13 @@ function checkAuth(){
     lName = loginName.value;
     lPass = loginPass.value;
     profileImgBlock.textContent = lName
+    profilesName.value = lName 
+    profilesPass.value = lPass
     if(lName == '' && lPass == '' || lName == '' || lPass == ''){
         wrapper.style.display = 'none';
         login.style.display = 'block';
         loginName.style.border = '1px solid red';
         loginPass.style.border = '1px solid red';
-
     }
 }
 
