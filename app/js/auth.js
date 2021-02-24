@@ -6,7 +6,10 @@ const wrapper = document.querySelector('.wrapper'),
       loginPass = document.querySelector('#login__input-pass'),
       loginWrapper = document.querySelector('.login__wrapper'),
       profilesName = document.querySelector('.modal__input--named'),
-      profilesPass = document.querySelector('.modal__input--password');
+      profilesPass = document.querySelector('.modal__input--password'),
+      profileNickname = document.querySelector('.modal__input--nickname'),
+      profileInfoName = document.querySelector('.modal__profile--name'),
+      profileInfoPass = document.querySelector('.modal__profile--pass');
 
 inputBtn.addEventListener('click', checkAuth)  
 
@@ -16,9 +19,15 @@ function checkAuth(){
     login.style.display = 'none';
     lName = loginName.value;
     lPass = loginPass.value;
+    lNick = profileNickname.value
+
+
     profileImgBlock.textContent = lName
     profilesName.value = lName 
     profilesPass.value = lPass
+    profileInfoName.textContent = `Ваше  имя: ${lName}`
+    profileInfoPass.textContent = `Ваш пароль: ${lPass}`
+
     if(lName == '' && lPass == '' || lName == '' || lPass == ''){
         wrapper.style.display = 'none';
         login.style.display = 'block';

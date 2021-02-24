@@ -1,6 +1,6 @@
 const profileName = document.querySelector('.modal__input--named'),
       profilePass = document.querySelector('.modal__input--password'),
-      profileNick = document.querySelector('#modal__input--nickname'),
+      profileNick = document.querySelector('.modal__input--nickname'),
       textName = document.querySelector('.modal__profile--name'),
       textPass = document.querySelector('.modal__profile--pass'),
       img = document.querySelector('.profile__imgBlock'),
@@ -12,17 +12,13 @@ const profileName = document.querySelector('.modal__input--named'),
 
 
 
-function getNickname(){
-    dogNick.textContent = profileNick.value
-
-    let nickNameDog = dogNick.textContent 
-    '@ ' + nickNameDog
-    console.log(typeof nickNameDog);
+function renameProfileInfo(){
+    let profileValue = profileNick.value
+    dogNick.textContent = `@${profileValue}`
+    textNick.textContent = `Ваш новый никнейм: @${profileNick.value}`
 }
 
-
-
-img.addEventListener('click', getNickname)
+img.addEventListener('click', renameProfileInfo)
 
 
 
@@ -32,5 +28,5 @@ function saveInfoProfile() {
     if(modalProfile.classList.contains('modal__active')){
         modalProfile.classList.remove('modal__active')
     }
-    getNickname();
+    renameProfileInfo();
 }
