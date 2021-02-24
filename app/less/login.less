@@ -1,0 +1,39 @@
+@light_blue: rgba(29,161,242,1.00);
+
+.login{
+    width: 100%;
+    height: 100vh;
+    
+    &__wrapper{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &__input{
+        width: 300px;
+        padding: 10px;
+        border: 1px solid @light_blue;
+        margin-bottom: 10px;
+        outline: none;
+        font-size: 18px;
+    }
+    &__error{
+        color: #f90;
+        text-decoration: underline;
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+.input__btn{
+    width: 320px;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: @light_blue;
+    border: none;
+    outline: none;
+}
