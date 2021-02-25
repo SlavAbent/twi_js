@@ -1,8 +1,17 @@
 const cardWrapper = document.querySelector('.mainside__tweeter'),
-      addTweet = document.querySelector('.mainside__tweets');
+      addTweet = document.querySelector('.mainside__tweets'),
+      tweetBlock = document.querySelector('.tweets__desc-text'),
+      tweetBtn = document.querySelector('.tweets__sub'),
+      modal = document.querySelector('.modal__tweets'),
+      nameProfile = document.querySelector('.profile__imgBlock-a'),
+      nickname = document.querySelector('.profile__imgBlock-p'),
+      date = document.querySelector('.tweet__info-time'),
+      logo = document.querySelector('.tweet__logo-img'),
+      tweetInfoImg = document.querySelector('.tweet__info-img'),
+      mainSideTweeter = document.querySelector('.mainside__tweeter')
 
-
-
+      
+      
       
 const getData = async function(url) {
 
@@ -59,7 +68,51 @@ function viewPosts(){
     }); 
 }
 
+function addTweets(){
+    // Object.entries(mainSideTweeter);
+    tweetBtn.addEventListener('click', () => {
+        createCards({
+            imgLogo: logo,
+            userName: nameProfile.textContent,
+            nickname: names(),
+            text: tweetBlock.value,
+            postDate:  getDate(),
+            comments: 50,
+            likes: 100
+        })
+        console.log(typeof mainSideTweeter);
+        if(modal.classList.contains('modal__active')){
+            modal.classList.remove('modal__active')
+        }
+        
+    }); 
+}
 
+addTweets()
+
+function names() {
+    let nicknameString = nickname.textContent
+    let lengthIdx = nicknameString.length
+    let resultString = nicknameString.split('').slice(1, lengthIdx).join('')
+    return resultString
+}
+
+getDate = () => {
+    let date = new Date();
+    let options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+        timezone: 'UTC',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    };
+    let resDate = date.toLocaleString("ru", options)
+    return resDate
+    
+}
 
 function init() {
     getData('./db/dataBase.json').then(function(data){
