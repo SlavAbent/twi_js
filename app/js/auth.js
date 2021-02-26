@@ -9,7 +9,14 @@ const wrapper = document.querySelector('.wrapper'),
       profilesPass = document.querySelector('.modal__input--password'),
       profileNickname = document.querySelector('.modal__input--nickname'),
       profileInfoName = document.querySelector('.modal__profile--name'),
-      profileInfoPass = document.querySelector('.modal__profile--pass');
+      profileInfoPass = document.querySelector('.modal__profile--pass'),
+      tweetImgLogin = document.querySelector('.tweets__icon-login');
+
+      
+      
+      let parentImg = document.querySelector('.profile__imgBlock'),
+        profileImgBlockImg = document.querySelector('.profile__imgBlock-img'),
+        tweetsLogo = document.querySelector('.tweets__logo')
 
 inputBtn.addEventListener('click', checkAuth)  
 
@@ -34,6 +41,8 @@ function checkAuth(){
         loginName.style.border = '1px solid red';
         loginPass.style.border = '1px solid red';
     }
+
+    
 }
 
 function autorized() {
@@ -56,5 +65,18 @@ function authAccess(){
     }
 }
 
+imgLoginAuth = () => {
+    tweetImgLogin.addEventListener('click', () => {
+        const img = document.createElement('img')
+        img.classList.add('profile__imgBlock-img')
+        img.src = prompt('Введите адрес вашей картинки')
+        parentImg.appendChild(img)
 
-
+        const modalImg = document.createElement('img')
+        modalImg.classList.add('tweets__logo-img')
+        modalImg.src = img.src
+        tweetsLogo.appendChild(modalImg)
+       
+    })
+}
+imgLoginAuth()

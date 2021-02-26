@@ -7,7 +7,9 @@ const cardWrapper = document.querySelector('.mainside__tweeter'),
       nickname = document.querySelector('.profile__imgBlock-p'),
       date = document.querySelector('.tweet__info-time'),
       logo = document.querySelector('.tweet__logo-img'),
+      tweetIcon = document.querySelector('.tweets__icon'),
       tweetInfoImg = document.querySelector('.tweet__info-img'),
+      tweetInfoImgMain = document.querySelector('.tweet__info-img'),
       mainSideTweeter = document.querySelector('.mainside__tweeter')
 
       
@@ -69,18 +71,19 @@ function viewPosts(){
 }
 
 function addTweets(){
-    // Object.entries(mainSideTweeter);
     tweetBtn.addEventListener('click', () => {
         createCards({
-            imgLogo: logo,
+            imgLogo: imgUrl,
             userName: nameProfile.textContent,
             nickname: names(),
             text: tweetBlock.value,
             postDate:  getDate(),
+            img: imgUrl,
             comments: 50,
             likes: 100
         })
-        console.log(typeof mainSideTweeter);
+
+        console.log('imgUrl', imgUrl);
         if(modal.classList.contains('modal__active')){
             modal.classList.remove('modal__active')
         }
@@ -90,7 +93,7 @@ function addTweets(){
 
 addTweets()
 
-function names() {
+const names = () => {
     let nicknameString = nickname.textContent
     let lengthIdx = nicknameString.length
     let resultString = nicknameString.split('').slice(1, lengthIdx).join('')
@@ -111,15 +114,22 @@ getDate = () => {
     };
     let resDate = date.toLocaleString("ru", options)
     return resDate
-    
 }
+
+imgMain = () => {
+    tweetIcon.addEventListener('click', () => {
+        imgUrl = prompt('Введите адрес изображения')
+    });
+}
+imgMain()
+
+
+
 
 function init() {
     getData('./db/dataBase.json').then(function(data){
         data.forEach(createCards);
     });
 }
-
-
 
 init();

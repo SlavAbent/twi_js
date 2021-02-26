@@ -8,7 +8,9 @@ const profileName = document.querySelector('.modal__input--named'),
       modalBtn = document.querySelector('.modal__button');
 
      let dogNick = document.querySelector('.profile__imgBlock-p'),
-         textNick = document.querySelector('.modal__profile--nickname');
+         textNick = document.querySelector('.modal__profile--nickname'),
+         tweetIconProfile = document.querySelector('.tweets__icon-profile');
+        
 
 
 
@@ -30,3 +32,17 @@ function saveInfoProfile() {
     }
     renameProfileInfo();
 }
+
+imgProfile= () => {
+    tweetIconProfile.addEventListener('click', () => {
+        profileImg = document.querySelector('.profile__imgBlock-img')
+        tweetsLogoImg = document.querySelector('.tweets__logo-img')
+        profileImg.src = prompt('Изменить картинку профиля')
+        tweetsLogoImg.src = profileImg.src
+        console.log(profileImg.src);
+    })
+}
+
+
+
+imgProfile()
