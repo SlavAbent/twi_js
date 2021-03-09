@@ -27,6 +27,7 @@ function scripts() {
 		'app/js/post.js',
 		'app/js/auth.js',
 		'app/js/profile.js',
+		'app/js/script.js',
 		])
 	.pipe(concat('app.min.js')) 
 	.pipe(uglify()) 
