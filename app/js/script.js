@@ -5,7 +5,6 @@ const loginName = document.querySelector('#login__input-name'),
       mainPage = document.querySelector('.wrapper'),
       inputBtn = document.querySelector('.input__btn'),
       logo = document.querySelector('.leftside__link-a'),
-      iconAuth = document.querySelector('.tweets__icon-login'),
       modalProfileBtn = document.querySelector('.profile__imgBlock-a'),
       modalProfileSave = document.querySelector('.modal__button'),
       modalProfile = document.querySelector('.modal__profile'),
@@ -27,13 +26,15 @@ const loginName = document.querySelector('#login__input-name'),
       profileImgBlockLink = document.querySelector('.profile__imgBlock-link'),
       cardWrapper = document.querySelector('.mainside__tweeter'),
       tweetsDescText = document.querySelector('.tweets__desc-text'),
-      tweetsIcon = document.querySelector('.tweets__icon'),
       tweetInfoP = document.querySelector('.tweet__info-p'),
-      tweetInfoNickname = document.querySelector('.tweet__info-nickname');
+      tweetInfoNickname = document.querySelector('.tweet__info-nickname'),
+      tweetsIconProfile = document.querySelector('.tweets__icon-profile'),
+      tweetIcon = document.querySelector('.tweets__icon')
+      
 
     // let login = ''
     // let srcPath = '/images/dest/post.jpg'
-    
+    let profileImgBlock = document.querySelector('.profile__imgBlock img')
 
 const getData = async function(url){
     const responce = await fetch(url)
@@ -55,8 +56,6 @@ function autorized() {
     mainPage.style.display = 'flex'
 }
 
-
-
 function notAutorized(){
     console.log('ВЫ не авторизованы!');
     alert('ВЫ не авторизованы!')
@@ -73,7 +72,7 @@ function checkAuth(){
         notAutorized()
     }  else {
         autorized()
-        createImageProfile()
+        imgMain()
     }
 }
 inputBtn.addEventListener('click', checkAuth)
@@ -82,9 +81,6 @@ logo.addEventListener('click', () => {
     mainPage.style.display = 'none'
     loginName.value = ''
     pass.value = ''
-})
-iconAuth.addEventListener('click', () => {
-    let setImageProfile = prompt('Введите url вашего изображения .jpg')
 })
 
 //ModalProfile
@@ -106,6 +102,8 @@ function modalProfileView() {
                 profileListName.textContent = `Ваше имя: ${loginName.value}`
                 profileListPass.textContent = `Ваш пароль: ${pass.value}`
                 profileListNickname.textContent = `Ваш никнейм: @${profileNickname.value}`
+                profileImgBlock.src = imgUrl
+                tweetsLogoImg.src = imgUrl
 
             }
             modalProfile.classList.remove('modal__active')
@@ -188,18 +186,18 @@ function createCards({userName, nickname, text, postDate, img, imgLogo, likes, c
 
 function addTweets(){
     tweetSub.addEventListener('click', () => {
-        createCards({
-            imgLogo: imgTweet,
-            img: imgTweet,
+        let objectCarts = {
+            imgLogo: imgUrl,
+            img: imgMain,
             userName: userName.textContent,
             nickname: profileImageBlock.textContent,
             text: tweetsDescText.value,
             postDate: getDate(),
             likes: '',
             comments: ''
-        })
+        }
+        createCards(objectCarts)
 
-        console.log(userName.textContent);
     })
 }
 addTweets()
@@ -220,25 +218,17 @@ getDate = () => {
     return resDate
 }
 
-function createImageProfile() {
-    // console.log(imgTweet);
-    let imageProfile = document.createElement('img')
+imgMain = () => {
+    tweetsIconProfile.addEventListener('click', () => {
+        imgUrl = prompt('Введите адрес изображения')
+        // profileImgBlock.src = imgUrl
+        // tweetsLogoImg.src = imgUrl
+    });
 
-    let srcPath = imgTweet
-    profileImage.appendChild(imageProfile)
-    imageProfile.classList.add('tweet__logo-img')
-    imageProfile.src = srcPath
-    tweetsLogoImg.src = srcPath
+    tweetIcon.addEventListener('click', () => {
+        imgMain = prompt('Введите адрес изображения')
+    })
 }
-
-tweetsIcon.addEventListener('click', () => {
-    let imgTweet = prompt('Введите url вашего изображения .jpg')
-
-    console.log(imgTweet);
-        // return imgTweet
-})
-
-
 
 function init(){
     getData('./db/dataBase.json').then(function(data){
@@ -246,3 +236,4 @@ function init(){
     });
 }
 init()
+
